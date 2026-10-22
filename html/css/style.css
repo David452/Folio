@@ -1,0 +1,316 @@
+/* Folio – vlastné štýly nad Bootstrapom 5 */
+
+:root {
+  --folio-primary: #2563eb;
+  --folio-accent: #06b6d4;
+  --folio-ink: #0f172a;
+  --folio-muted: #64748b;
+  --folio-bg: #f8fafc;
+  --folio-border: #e2e8f0;
+  --bs-primary: #2563eb;
+  --bs-primary-rgb: 37, 99, 235;
+  --bs-link-color: #2563eb;
+  --bs-link-color-rgb: 37, 99, 235;
+}
+
+body {
+  background-color: var(--folio-bg);
+  color: var(--folio-ink);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
+}
+
+/* Bootstrap tlačidlo „primary“ vo farbe Folio */
+.btn-primary {
+  --bs-btn-bg: var(--folio-primary);
+  --bs-btn-border-color: var(--folio-primary);
+  --bs-btn-hover-bg: #1d4ed8;
+  --bs-btn-hover-border-color: #1d4ed8;
+  --bs-btn-active-bg: #1e40af;
+  --bs-btn-active-border-color: #1e40af;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--folio-primary);
+  --bs-btn-border-color: var(--folio-primary);
+  --bs-btn-hover-bg: var(--folio-primary);
+  --bs-btn-hover-border-color: var(--folio-primary);
+  --bs-btn-active-bg: var(--folio-primary);
+}
+
+/* ---------- Hlavička ---------- */
+.site-header {
+  background-color: #fff;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--folio-border);
+}
+
+.site-header .navbar-brand img {
+  height: 36px;
+  width: auto;
+}
+
+/* .navbar ruší bočné odsadenie .container-xl – vrátime ho, aby logo
+   lícovalo s obsahom pod hlavičkou */
+.site-header .navbar {
+  padding-left: .75rem;
+  padding-right: .75rem;
+}
+
+/* Na mobile väčšie bočné odsadenie hlavičky */
+@media (max-width: 991.98px) {
+  .site-header .navbar {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+.site-header .nav-link {
+  color: var(--folio-muted);
+  font-weight: 500;
+}
+
+.site-header .nav-link:hover {
+  color: var(--folio-ink);
+}
+
+.site-header .nav-link.active {
+  color: var(--folio-primary);
+  box-shadow: inset 0 -2px 0 var(--folio-primary);
+}
+
+.nav-link.nav-admin {
+  border-width: 1px;
+  border-style: dashed;
+  border-color: var(--folio-border);
+  border-radius: .375rem;
+}
+
+.header-search {
+  max-width: 320px;
+}
+
+.avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-image: linear-gradient(135deg, var(--folio-primary), var(--folio-accent));
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+/* Na mobile je zbalené menu pod sebou, vyhľadávanie na celú šírku */
+@media (max-width: 992px) {
+  .site-header .nav-link.active {
+    box-shadow: inset 3px 0 0 var(--folio-primary);
+    padding-left: .75rem;
+  }
+
+  .nav-link.nav-admin {
+    border-style: none;
+  }
+
+  .header-search {
+    max-width: none;
+  }
+}
+
+/* ---------- Placeholder obsahu (Rám 1) ---------- */
+.content-placeholder {
+  min-height: 60vh;
+  border-width: 2px;
+  border-style: dashed;
+  border-color: var(--folio-border);
+  border-radius: 1rem;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 2rem;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+}
+
+/* ---------- Pätička ---------- */
+.site-footer {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: var(--folio-border);
+  background-color: #fff;
+  color: var(--folio-muted);
+  font-size: .9rem;
+}
+
+.site-footer a {
+  color: var(--folio-muted);
+  text-decoration-line: none;
+}
+
+.site-footer a:hover {
+  color: var(--folio-ink);
+}
+
+/* ---------- Editor projektu (Rám 2) ---------- */
+.page-title {
+  font-size: clamp(1.35rem, 3.5vw, 1.9rem);
+  font-weight: 700;
+}
+
+.section-label {
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--folio-muted);
+}
+
+.block-card {
+  border-color: var(--folio-border);
+}
+
+.block-card .card-header {
+  background-color: #fff;
+  border-bottom-color: var(--folio-border);
+  row-gap: .5rem;
+  column-gap: .5rem;
+}
+
+.block-card.is-editing {
+  border-color: var(--folio-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, .12);
+}
+
+.block-card.is-editing .card-header {
+  background-color: #eff6ff;
+}
+
+.block-type {
+  background-color: var(--folio-bg);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--folio-border);
+  color: var(--folio-ink);
+  font-weight: 500;
+}
+
+.img-placeholder {
+  background-image: repeating-linear-gradient(45deg, #f1f5f9 0 12px, #e2e8f0 12px 24px);
+  border-radius: .5rem;
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--folio-muted);
+  font-size: .9rem;
+}
+
+.img-placeholder.tall {
+  min-height: 260px;
+}
+
+.dropzone {
+  border-width: 2px;
+  border-style: dashed;
+  border-color: #bfdbfe;
+  border-radius: .5rem;
+  background-color: #f5f9ff;
+  padding-top: 1.25rem;
+  padding-right: 1.25rem;
+  padding-bottom: 1.25rem;
+  padding-left: 1.25rem;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: .5rem;
+  column-gap: .5rem;
+}
+
+.add-block {
+  border-width: 2px;
+  border-style: dashed;
+  border-color: #bfdbfe;
+  border-radius: .75rem;
+  background-color: #fff;
+}
+
+.block-type-btn {
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--folio-border);
+  background-color: #fff;
+  border-radius: .5rem;
+  padding-top: .75rem;
+  padding-right: .5rem;
+  padding-bottom: .75rem;
+  padding-left: .5rem;
+  font-weight: 500;
+  color: var(--folio-ink);
+}
+
+.block-type-btn:hover {
+  border-color: var(--folio-primary);
+  color: var(--folio-primary);
+}
+
+.block-type-btn .bi {
+  display: block;
+  font-size: 1.25rem;
+  margin-bottom: .25rem;
+}
+
+/* Bočný panel ostáva na desktope pri scrollovaní viditeľný */
+@media (min-width: 992px) {
+  .sticky-panel {
+    position: sticky;
+    top: 1rem;
+  }
+}
+
+.tag-pill {
+  background-color: #eff6ff;
+  color: var(--folio-primary);
+  border-width: 1px;
+  border-style: solid;
+  border-color: #bfdbfe;
+  font-weight: 500;
+}
+
+.tag-pill .btn-close {
+  width: .5em;
+  height: .5em;
+}
+
+.tag-box {
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--folio-border);
+  border-radius: .5rem;
+  padding-top: .75rem;
+  padding-right: .75rem;
+  padding-bottom: .75rem;
+  padding-left: .75rem;
+}
+
+/* Kód v bloku nesmie roztiahnuť stránku */
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+}

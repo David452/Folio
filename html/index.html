@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="sk">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Folio – Objavovať</title>
+  <link rel="icon" href="imgs/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- ===== Hlavička s logom, navigáciou, vyhľadávaním a používateľským menu ===== -->
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg container-xl py-2" aria-label="Hlavná navigácia">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="imgs/folio-logo.svg" alt="Folio">
+      </a>
+
+      <!-- Na mobile: avatar ostáva viditeľný vedľa hamburgera -->
+      <div class="d-flex align-items-center gap-2 order-lg-last ms-auto ms-lg-3">
+        <div class="dropdown">
+          <button class="btn btn-link p-0 d-flex align-items-center gap-1 text-decoration-none text-body" type="button"
+            data-bs-toggle="dropdown" aria-expanded="false" aria-label="Používateľské menu">
+            <span class="avatar">JK</span>
+            <i class="bi bi-chevron-down small"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><span class="dropdown-item-text small text-secondary">Prihlásený: <strong>jana_k</strong></span></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Profil</a></li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right me-2"></i>Odhlásiť sa</a></li>
+          </ul>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+          aria-controls="mainNav" aria-expanded="false" aria-label="Zobraziť menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav me-auto mt-2 mt-lg-0 gap-lg-1">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Objavovať</a></li>
+          <li class="nav-item"><a class="nav-link" href="editor.html">Moje projekty</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Nastavenia</a></li>
+          <li class="nav-item"><a class="nav-link nav-admin" href="#">Administrácia</a></li>
+        </ul>
+        <form class="header-search flex-grow-1 my-2 my-lg-0" role="search">
+          <div class="input-group">
+            <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+            <input class="form-control" type="search" placeholder="Hľadať projekty, autorov…" aria-label="Hľadať">
+          </div>
+        </form>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== Hlavný obsah – zástupný obsah ===== -->
+  <main class="container-xl py-4">
+    <section class="content-placeholder" aria-label="Obsah stránky">
+      <div>
+        <i class="bi bi-grid-1x2 display-5 text-secondary"></i>
+        <h1 class="h3 mt-3">Obsah stránky</h1>
+        <p class="text-secondary mb-0 mx-auto" style="max-width: 36rem">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem sa vloží obsah
+          konkrétnej stránky aplikácie – zoznam portfólií, detail projektu, nastavenia a pod.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Pätička ===== -->
+  <footer class="site-footer py-3 mt-auto">
+    <div class="container-xl d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2">
+      <span>&copy; 2026 Folio – platforma na tvorbu osobných portfólií</span>
+      <nav aria-label="Pätička">
+        <ul class="list-inline mb-0">
+          <li class="list-inline-item"><a href="#">O projekte</a></li>
+          <li class="list-inline-item"><a href="#">Podmienky</a></li>
+          <li class="list-inline-item"><a href="#">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
