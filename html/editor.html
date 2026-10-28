@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="sk">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Folio – Editor projektu</title>
+  <link rel="icon" href="imgs/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- ===== Hlavička (rovnaká ako v index.html) ===== -->
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg container-xl py-2" aria-label="Hlavná navigácia">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="imgs/folio-logo.svg" alt="Folio">
+      </a>
+
+      <div class="d-flex align-items-center gap-2 order-lg-last ms-auto ms-lg-3">
+        <div class="dropdown">
+          <button class="btn btn-link p-0 d-flex align-items-center gap-1 text-decoration-none text-body" type="button"
+            data-bs-toggle="dropdown" aria-expanded="false" aria-label="Používateľské menu">
+            <span class="avatar">JK</span>
+            <i class="bi bi-chevron-down small"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><span class="dropdown-item-text small text-secondary">Prihlásený: <strong>jana_k</strong></span></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Profil</a></li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right me-2"></i>Odhlásiť sa</a></li>
+          </ul>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+          aria-controls="mainNav" aria-expanded="false" aria-label="Zobraziť menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav me-auto mt-2 mt-lg-0 gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Objavovať</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="editor.html">Moje projekty</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Nastavenia</a></li>
+          <li class="nav-item"><a class="nav-link nav-admin" href="#">Administrácia</a></li>
+        </ul>
+        <form class="header-search flex-grow-1 my-2 my-lg-0" role="search">
+          <div class="input-group">
+            <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+            <input class="form-control" type="search" placeholder="Hľadať projekty, autorov…" aria-label="Hľadať">
+          </div>
+        </form>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container-xl py-4">
+
+    <!-- ===== Záhlavie stránky projektu ===== -->
+    <section
+      class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4 pb-3 border-bottom">
+      <div>
+        <a href="#" class="small text-decoration-none"><i class="bi bi-arrow-left"></i> Moje projekty</a>
+        <div class="d-flex flex-wrap align-items-center gap-2 mt-1">
+          <h1 class="page-title mb-0">Pletený sveter s copánkovým vzorom</h1>
+          <span class="badge rounded-pill text-bg-success-subtle border border-success-subtle text-success-emphasis">
+            <i class="bi bi-check2"></i> Uložené
+          </span>
+        </div>
+      </div>
+      <div class="d-flex flex-wrap gap-2">
+        <a href="#" class="btn btn-outline-secondary btn-sm">Zobraziť verejnú stránku <i
+            class="bi bi-box-arrow-up-right"></i></a>
+        <button type="button" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i> Zmazať projekt</button>
+      </div>
+    </section>
+
+    <div class="row g-4">
+
+      <!-- ===== Ľavý stĺpec: bloky obsahu ===== -->
+      <section class="col-lg-8" aria-labelledby="blocksTitle">
+        <h2 id="blocksTitle" class="section-label mb-3">Obsah stránky projektu (4 bloky)</h2>
+
+        <!-- Blok: Nadpis -->
+        <article class="card block-card mb-3">
+          <div class="card-header d-flex flex-wrap justify-content-between align-items-center">
+            <span class="badge block-type"><i class="bi bi-type-h1"></i> Nadpis</span>
+            <div class="btn-group btn-group-sm" role="group" aria-label="Akcie bloku">
+              <button type="button" class="btn btn-outline-secondary" aria-label="Posunúť hore"><i
+                  class="bi bi-arrow-up"></i></button>
+              <button type="button" class="btn btn-outline-secondary" aria-label="Posunúť dole"><i
+                  class="bi bi-arrow-down"></i></button>
+              <button type="button" class="btn btn-outline-secondary"><i class="bi bi-pencil"></i><span
+                  class="d-none d-sm-inline"> Upraviť</span></button>
+              <button type="button" class="btn btn-outline-danger"><i class="bi bi-trash"></i><span
+                  class="d-none d-sm-inline"> Zmazať</span></button>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3 class="h4 mb-0">Ako som plietla svoj prvý sveter</h3>
+          </div>
+        </article>
+
+        <!-- Blok: Text s obrázkom – v režime úprav -->
+        <article class="card block-card is-editing mb-3">
+          <div class="card-header d-flex flex-wrap justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-2">
+              <span class="badge block-type"><i class="bi bi-layout-text-sidebar"></i> Text s obrázkom</span>
+              <span class="small text-primary fst-italic"><i class="bi bi-pencil"></i> režim úprav</span>
+            </div>
+            <div class="btn-group btn-group-sm" role="group" aria-label="Akcie bloku">
+              <button type="button" class="btn btn-outline-secondary" aria-label="Posunúť hore"><i
+                  class="bi bi-arrow-up"></i></button>
+              <button type="button" class="btn btn-outline-secondary" aria-label="Posunúť dole"><i
+                  class="bi bi-arrow-down"></i></button>
+              <button type="button" class="btn btn-outline-danger"><i class="bi bi-trash"></i><span
+                  class="d-none d-sm-inline"> Zmazať</span></button>
+            </div>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="mb-3">
+                <label for="b2Title" class="form-label">Nadpis</label>
+                <input id="b2Title" type="text" class="form-control" value="Výber priadze a ihlíc">
+              </div>
+              <div class="mb-3">
+                <label for="b2Text" class="form-label">Text</label>
+                <textarea id="b2Text" class="form-control"
+                  rows="4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</textarea>
+              </div>
+              <label class="form-label">Obrázok</label>
+              <div class="row g-3 mb-3">
+                <div class="col-sm-4">
+                  <div class="img-placeholder h-100"><i class="bi bi-image fs-3"></i></div>
+                </div>
+                <div class="col-sm-8">
+                  <div class="dropzone">
+                    <span><i class="bi bi-cloud-arrow-up"></i> Presuň obrázok sem alebo</span>
+                    <label class="btn btn-sm btn-outline-primary mb-0">
+                      Vybrať súbor <input type="file" accept="image/png, image/jpeg" hidden>
+                    </label>
+                    <span class="small text-secondary">JPG / PNG, max. 5 MB</span>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-end gap-2">
+                <button type="button" class="btn btn-outline-secondary btn-sm">Zrušiť</button>
+                <button type="submit" class="btn btn-primary btn-sm">Uložiť</button>
+              </div>
+            </form>
+          </div>
+        </article>
+
+        <!-- Blok: Zoznam -->
+        <article class="card block-card mb-3">
+          <div class="card-header d-flex flex-wrap justify-content-between align-items-center">
+            <span class="badge block-type"><i class="bi bi-list-ul"></i> Zoznam</span>
+            <div class="btn-group btn-group-sm" role="group" aria-label="Akcie bloku">
+              <button type="button" class="btn btn-outline-secondary" aria-label="Posunúť hore"><i
+                  class="bi bi-arrow-up"></i></button>
+              <button type="button" class="btn btn-outline-secondary" aria-label="Posunúť dole"><i
+                  class="bi bi-arrow-down"></i></button>
+              <button type="button" class="btn btn-outline-secondary"><i class="bi bi-pencil"></i><span
+                  class="d-none d-sm-inline"> Upraviť</span></button>
+              <button type="button" class="btn btn-outline-danger"><i class="bi bi-trash"></i><span
+                  class="d-none d-sm-inline"> Zmazať</span></button>
+            </div>
+          </div>
+          <div class="card-body">
+            <ul class="mb-0">
+              <li>6 klbiek merino vlny</li>
+              <li>kruhové ihlice č. 4,5</li>
+              <li>pomocná ihlica na copánky</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Blok: Obrázok -->
+        <article class="card block-card mb-3">
+          <div class="card-header d-flex flex-wrap justify-content-between align-items-center">
+            <span class="badge block-type"><i class="bi bi-image"></i> Obrázok</span>
+            <div class="btn-group btn-group-sm" role="group" aria-label="Akcie bloku">
+              <button type="button" class="btn btn-outline-secondary" aria-label="Posunúť hore"><i
+                  class="bi bi-arrow-up"></i></button>
+              <button type="button" class="btn btn-outline-secondary" aria-label="Posunúť dole"><i
+                  class="bi bi-arrow-down"></i></button>
+              <button type="button" class="btn btn-outline-secondary"><i class="bi bi-pencil"></i><span
+                  class="d-none d-sm-inline"> Upraviť</span></button>
+              <button type="button" class="btn btn-outline-danger"><i class="bi bi-trash"></i><span
+                  class="d-none d-sm-inline"> Zmazať</span></button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="img-placeholder tall"><span><i class="bi bi-image fs-2 d-block text-center"></i>Hotový
+                sveter</span></div>
+          </div>
+        </article>
+
+        <!-- Pridanie bloku -->
+        <section class="add-block p-3" aria-labelledby="addBlockTitle">
+          <h3 id="addBlockTitle" class="h6 text-center text-primary mb-3"><i class="bi bi-plus-lg"></i> Pridať blok</h3>
+          <p class="small text-secondary mb-2">Vyber typ bloku:</p>
+          <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-2">
+            <div class="col"><button type="button" class="block-type-btn"><i class="bi bi-type-h1"></i>Nadpis</button>
+            </div>
+            <div class="col"><button type="button" class="block-type-btn"><i
+                  class="bi bi-text-paragraph"></i>Text</button></div>
+            <div class="col"><button type="button" class="block-type-btn"><i class="bi bi-layout-text-sidebar"></i>Text
+                s obrázkom</button></div>
+            <div class="col"><button type="button" class="block-type-btn"><i class="bi bi-image"></i>Obrázok</button>
+            </div>
+            <div class="col"><button type="button" class="block-type-btn"><i class="bi bi-list-ul"></i>Zoznam</button>
+            </div>
+            <div class="col"><button type="button" class="block-type-btn"><i class="bi bi-code-slash"></i>Ukážka
+                kódu</button></div>
+            <div class="col"><button type="button" class="block-type-btn"><i class="bi bi-link-45deg"></i>Odkaz</button>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- ===== Pravý stĺpec: údaje projektu ===== -->
+      <aside class="col-lg-4" aria-labelledby="projectDataTitle">
+        <div class="card sticky-panel">
+          <div class="card-body">
+            <h2 id="projectDataTitle" class="h5 pb-2 mb-3 border-bottom">Údaje projektu</h2>
+            <form>
+              <div class="mb-3">
+                <label for="pTitle" class="form-label">Názov <span class="text-danger">*</span></label>
+                <input id="pTitle" type="text" class="form-control" value="Pletený sveter s copánkovým vzorom" required>
+              </div>
+              <div class="mb-3">
+                <label for="pDesc" class="form-label">Krátky popis</label>
+                <textarea id="pDesc" class="form-control"
+                  rows="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</textarea>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Titulný obrázok</label>
+                <div class="img-placeholder mb-2"><i class="bi bi-image fs-3"></i></div>
+                <label class="btn btn-sm btn-outline-secondary mb-0">
+                  <i class="bi bi-upload"></i> Nahrať obrázok <input type="file" accept="image/png, image/jpeg" hidden>
+                </label>
+              </div>
+
+              <hr>
+
+              <fieldset class="mb-3">
+                <legend class="form-label fs-6 fw-semibold">Štítky</legend>
+                <label for="pCategory" class="form-label small text-secondary">1. Vyber kategóriu</label>
+                <select id="pCategory" class="form-select mb-3">
+                  <option>Programovanie</option>
+                  <option selected>Ručné práce</option>
+                  <option>Výtvarné umenie</option>
+                </select>
+
+                <p class="form-label small text-secondary mb-1">2. Zaškrtni štítky</p>
+                <div class="tag-box row row-cols-2 g-1 mx-0 mb-3">
+                  <div class="col form-check"><input class="form-check-input" type="checkbox" id="t1" checked><label
+                      class="form-check-label" for="t1">pletenie</label></div>
+                  <div class="col form-check"><input class="form-check-input" type="checkbox" id="t2"><label
+                      class="form-check-label" for="t2">háčkovanie</label></div>
+                  <div class="col form-check"><input class="form-check-input" type="checkbox" id="t3" checked><label
+                      class="form-check-label" for="t3">vlna</label></div>
+                  <div class="col form-check"><input class="form-check-input" type="checkbox" id="t4"><label
+                      class="form-check-label" for="t4">vyšívanie</label></div>
+                  <div class="col form-check"><input class="form-check-input" type="checkbox" id="t5"><label
+                      class="form-check-label" for="t5">šitie</label></div>
+                  <div class="col form-check"><input class="form-check-input" type="checkbox" id="t6" checked><label
+                      class="form-check-label" for="t6">copánky</label></div>
+                </div>
+
+                <p class="small text-secondary mb-1">Vybrané:</p>
+                <div class="d-flex flex-wrap gap-1 mb-2">
+                  <span class="badge rounded-pill tag-pill d-inline-flex align-items-center gap-1">pletenie <button
+                      type="button" class="btn-close" aria-label="Odobrať"></button></span>
+                  <span class="badge rounded-pill tag-pill d-inline-flex align-items-center gap-1">vlna <button
+                      type="button" class="btn-close" aria-label="Odobrať"></button></span>
+                  <span class="badge rounded-pill tag-pill d-inline-flex align-items-center gap-1">copánky <button
+                      type="button" class="btn-close" aria-label="Odobrať"></button></span>
+                </div>
+                <p class="small fst-italic text-secondary mb-0">Chýba štítok? Nové štítky pridáva administrátor.</p>
+              </fieldset>
+
+              <hr>
+
+              <fieldset class="mb-3">
+                <legend class="form-label fs-6 fw-semibold">Viditeľnosť</legend>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="visibility" id="vPublic" checked>
+                  <label class="form-check-label" for="vPublic">Verejný</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="visibility" id="vPrivate">
+                  <label class="form-check-label" for="vPrivate">Súkromný</label>
+                </div>
+              </fieldset>
+
+              <button type="submit" class="btn btn-primary w-100">Uložiť</button>
+            </form>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- ===== Pätička ===== -->
+  <footer class="site-footer py-3 mt-4">
+    <div class="container-xl d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2">
+      <span>&copy; 2026 Folio – platforma na tvorbu osobných portfólií</span>
+      <nav aria-label="Pätička">
+        <ul class="list-inline mb-0">
+          <li class="list-inline-item"><a href="#">O projekte</a></li>
+          <li class="list-inline-item"><a href="#">Podmienky</a></li>
+          <li class="list-inline-item"><a href="#">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
