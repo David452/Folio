@@ -3,56 +3,109 @@
 /** @var string $contentHTML */
 /** @var \Framework\Auth\AppUser $user */
 /** @var \Framework\Support\LinkGenerator $link */
+
+// Aktuálna stránka z URL
+$currentController = strtolower(trim($_GET['c'] ?? '')) ?: 'home';
+$currentAction = trim($_GET['a'] ?? '') ?: 'index';
+$isActive = fn(string $controller, string $action = 'index') => $currentController === $controller && $currentAction === $action;
+
 ?>
 <!DOCTYPE html>
 <html lang="sk">
+
 <head>
     <title><?= App\Configuration::APP_NAME ?></title>
     <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="<?= $link->asset('favicons/apple-touch-icon.png') ?>">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?= $link->asset('favicons/favicon-32x32.png') ?>">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?= $link->asset('favicons/favicon-16x16.png') ?>">
-    <link rel="manifest" href="<?= $link->asset('favicons/site.webmanifest') ?>">
-    <link rel="shortcut icon" href="<?= $link->asset('favicons/favicon.ico') ?>">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-            crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="<?= $link->asset('css/styl.css') ?>">
-    <script src="<?= $link->asset('js/script.js') ?>"></script>
+    <link rel="icon" type="image/svg+xml" href="<?= $link->asset('favicons/favicon.svg') ?>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="<?= $link->asset('css/style.css') ?>">
 </head>
+
 <body>
-<nav class="navbar navbar-expand-sm bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="<?= $link->url('home.index') ?>">
-            <img src="<?= $link->asset('images/vaiicko_logo.png') ?>" title="<?= App\Configuration::APP_NAME ?>" alt="Framework Logo">
-        </a>
-        <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="<?= $link->url('home.contact') ?>">Contact</a>
-            </li>
-        </ul>
-        <?php if ($user->isLoggedIn()) { ?>
-            <span class="navbar-text">Logged in user: <b><?= e($user->getName()) ?></b></span>
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= $link->url('auth.logout') ?>">Log out</a>
-                </li>
-            </ul>
-        <?php } else { ?>
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= App\Configuration::LOGIN_URL ?>">Log in</a>
-                </li>
-            </ul>
-        <?php } ?>
-    </div>
-</nav>
-<div class="container-fluid mt-3">
-    <div class="web-content">
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg container-xl py-2" aria-label="Hlavná navigácia">
+            <a class="navbar-brand d-flex align-items-center" href="<?= $link->url("home.index") ?>">
+                <img src="<?= $link->asset('images/folio-logo.svg') ?>" alt="Folio">
+            </a>
+
+            <!-- Na mobile: avatar ostáva viditeľný vedľa hamburgera -->
+            <?php if ($user->isLoggedIn()) { ?>
+                <div class="d-flex align-items-center gap-2 order-lg-last ms-auto ms-lg-3">
+                    <div class="dropdown">
+                        <button class="btn btn-link p-0 d-flex align-items-center gap-1 text-decoration-none text-body"
+                            type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Používateľské menu">
+                            <span class="avatar">JK</span>
+                            <i class="bi bi-chevron-down small"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><span class="dropdown-item-text small text-secondary">Prihlásený:
+                                    <strong><?= $user->getName() ?></strong></span></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="<?= $link->url('user.index') ?>"><i
+                                        class="bi bi-person me-2"></i>Profil</a></li>
+                            <li><a class="dropdown-item" href="<?= $link->url('auth.logout') ?>"><i
+                                        class="bi bi-box-arrow-right me-2"></i>Odhlásiť sa</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                        aria-controls="mainNav" aria-expanded="false" aria-label="Zobraziť menu">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            <?php } ?>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav me-auto mt-2 mt-lg-0 gap-lg-1">
+                    <li class="nav-item"><a class="nav-link<?= $isActive('home', 'index') ? ' active' : '' ?>"
+                            <?= $isActive('home', 'index') ? 'aria-current="page"' : '' ?>
+                            href="<?= $link->url('home.index') ?>">Objavovať</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link<?= $isActive('home', 'projects') ? ' active' : '' ?>"
+                            <?= $isActive('home', 'projects') ? 'aria-current="page"' : '' ?>
+                            href="<?= $link->url('home.projects') ?>">Moje projekty</a>
+                    </li>
+                    <?php if ($user->isLoggedIn()) { ?>
+                        <li class="nav-item"><a class="nav-link<?= $isActive('user', 'settings') ? ' active' : '' ?>"
+                                <?= $isActive('user', 'settings') ? 'aria-current="page"' : '' ?>
+                                href="<?= $link->url('user.settings') ?>">Nastavenia</a>
+                        </li>
+                    <?php } ?>
+                    <?php if ($user->isLoggedIn() /** TODO: kontrola ci je admin */) { ?>
+                        <li class="nav-item"><a class="nav-link nav-admin<?= $isActive('admin') ? ' active' : '' ?>"
+                                <?= $isActive('admin') ? 'aria-current="page"' : '' ?>
+                                href="<?= $link->url('admin.index') ?>">Administrácia</a></li>
+                    <?php } ?>
+                </ul>
+                <form class="header-search flex-grow-1 my-2 my-lg-0" role="search">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                        <input class="form-control" type="search" placeholder="Hľadať projekty, autorov…"
+                            aria-label="Hľadať">
+                    </div>
+                </form>
+            </div>
+        </nav>
+    </header>
+    <main class="container-xl py-4">
         <?= $contentHTML ?>
-    </div>
-</div>
+    </main>
+    <footer class="site-footer py-3 mt-auto">
+        <div class="container-xl d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2">
+            <span>&copy; 2026 Folio – platforma na tvorbu osobných portfólií</span>
+            <nav aria-label="Pätička">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item"><a href="<?= $link->url('home.about') ?>">O projekte</a></li>
+                    <li class="list-inline-item"><a href="<?= $link->url('home.terms') ?>">Podmienky</a></li>
+                    <li class="list-inline-item"><a href="<?= $link->url('home.contact') ?>">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

@@ -41,4 +41,24 @@ class HomeController extends BaseController
     {
         return $this->html();
     }
+
+    public function projects(Request $request): Response
+    {
+        return $this->html();
+    }
+
+    public function about(Request $request): Response
+    {
+        return $this->html();
+    }
+
+    public function terms(Request $request): Response
+    {
+        return $this->html();
+    }
+
+    public function contact(Request $request): Response
+    {
+        return $this->html();
+    }
 }
