@@ -145,6 +145,113 @@ main {
   padding-left: 1rem;
 }
 
+/* ---------- Objavovať (úvodná stránka) ---------- */
+.filter-scroll {
+  display: flex;
+  flex-wrap: nowrap;
+  column-gap: .5rem;
+  overflow-x: auto;
+  padding-bottom: .25rem;
+}
+
+@media (min-width: 768px) {
+  .filter-scroll {
+    flex-wrap: wrap;
+    row-gap: .5rem;
+    overflow-x: visible;
+  }
+}
+
+.filter-pill,
+.tag-filter {
+  white-space: nowrap;
+  border-radius: 50rem;
+  background-color: #fff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--folio-border);
+  color: var(--folio-ink);
+  font-weight: 500;
+}
+
+.filter-pill:hover,
+.tag-filter:hover {
+  border-color: var(--folio-primary);
+  color: var(--folio-primary);
+}
+
+.filter-pill.active {
+  background-color: var(--folio-primary);
+  border-color: var(--folio-primary);
+  color: #fff;
+}
+
+.tag-filter {
+  font-size: .8rem;
+}
+
+.tag-filter.active {
+  background-color: #eff6ff;
+  border-color: var(--folio-primary);
+  color: var(--folio-primary);
+}
+
+.project-card {
+  border-color: var(--folio-border);
+  transition: box-shadow .15s ease, transform .15s ease;
+}
+
+.project-card:hover {
+  box-shadow: 0 .5rem 1.25rem rgba(15, 23, 42, .08);
+  transform: translateY(-2px);
+}
+
+.project-cover {
+  min-height: 0;
+  aspect-ratio: 16 / 9;
+}
+
+.project-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.project-card .card-footer.project-author {
+  display: flex;
+  align-items: center;
+  column-gap: .5rem;
+  background-color: #fff;
+  border-top-color: var(--folio-border);
+}
+
+.avatar-sm {
+  width: 26px;
+  height: 26px;
+  font-size: .7rem;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-width: 2px;
+  border-style: dashed;
+  border-color: var(--folio-border);
+  border-radius: 1rem;
+  background-color: #fff;
+  padding-top: 4rem;
+  padding-right: 1rem;
+  padding-bottom: 4rem;
+  padding-left: 1rem;
+}
+
+.empty-state[hidden] {
+  display: none;
+}
+
 /* ---------- Pätička ---------- */
 .site-footer {
   border-top-width: 1px;
@@ -207,6 +314,7 @@ main {
   font-weight: 500;
 }
 
+/* TODO: placeholder mozem asi odstranit ked tam uz budu realne projekty */
 .img-placeholder {
   background-image: repeating-linear-gradient(45deg, #f1f5f9 0 12px, #e2e8f0 12px 24px);
   border-radius: .5rem;

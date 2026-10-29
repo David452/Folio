@@ -14,6 +14,8 @@ $isActive = fn(string $controller, string $action = 'index') => $currentControll
 <html lang="sk">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= App\Configuration::APP_NAME ?></title>
     <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="<?= $link->asset('favicons/favicon.svg') ?>">
@@ -56,6 +58,13 @@ $isActive = fn(string $controller, string $action = 'index') => $currentControll
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
+            <?php } else { ?>
+                <!-- Neprihlásený: na mobile iba hamburger, tlačidlá sú v zbalenom menu -->
+                <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false"
+                    aria-label="Zobraziť menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             <?php } ?>
 
             <div class="collapse navbar-collapse" id="mainNav">
@@ -87,6 +96,15 @@ $isActive = fn(string $controller, string $action = 'index') => $currentControll
                             aria-label="Hľadať">
                     </div>
                 </form>
+                <?php if (!$user->isLoggedIn()) { ?>
+                    <!-- Mobil: pod vyhľadávaním na celú šírku, desktop: vpravo v hlavičke -->
+                    <div class="d-flex gap-2 mt-2 mt-lg-0 ms-lg-3">
+                        <a class="btn btn-sm btn-outline-primary flex-fill" href="<?= $link->url('auth.login') ?>">Prihlásiť
+                            sa</a>
+                        <a class="btn btn-sm btn-primary flex-fill" href="<?= $link->url('auth.register') ?>">Registrovať
+                            sa</a>
+                    </div>
+                <?php } ?>
             </div>
         </nav>
     </header>
