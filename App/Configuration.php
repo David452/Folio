@@ -5,6 +5,7 @@ namespace App;
 use Framework\Auth\DummyAuthenticator;
 use Framework\Core\ErrorHandler;
 use Framework\DB\DefaultConventions;
+use App\Models\User;
 
 /**
  * Class Configuration

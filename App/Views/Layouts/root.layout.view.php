@@ -37,7 +37,7 @@ $isActive = fn(string $controller, string $action = 'index') => $currentControll
                     <div class="dropdown">
                         <button class="btn btn-link p-0 d-flex align-items-center gap-1 text-decoration-none text-body"
                             type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Používateľské menu">
-                            <span class="avatar">JK</span>
+                            <span class="avatar"><?= $user->getIdentity()->username[0] ?></span>
                             <i class="bi bi-chevron-down small"></i>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
@@ -73,17 +73,18 @@ $isActive = fn(string $controller, string $action = 'index') => $currentControll
                             <?= $isActive('home', 'index') ? 'aria-current="page"' : '' ?>
                             href="<?= $link->url('home.index') ?>">Objavovať</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link<?= $isActive('home', 'projects') ? ' active' : '' ?>"
-                            <?= $isActive('home', 'projects') ? 'aria-current="page"' : '' ?>
-                            href="<?= $link->url('home.projects') ?>">Moje projekty</a>
-                    </li>
+                    <?php $isMyProjects = $isActive('home', 'dashboard') || $isActive('home', 'projectForm') || $isActive('home', 'projects'); ?>
                     <?php if ($user->isLoggedIn()) { ?>
+                        <li class="nav-item"><a class="nav-link<?= $isMyProjects ? ' active' : '' ?>"
+                                    <?= $isMyProjects ? 'aria-current="page"' : '' ?>
+                                                href="<?= $link->url('home.dashboard') ?>">Moje projekty</a>
+                        </li>
                         <li class="nav-item"><a class="nav-link<?= $isActive('user', 'settings') ? ' active' : '' ?>"
                                 <?= $isActive('user', 'settings') ? 'aria-current="page"' : '' ?>
                                 href="<?= $link->url('user.settings') ?>">Nastavenia</a>
                         </li>
                     <?php } ?>
-                    <?php if ($user->isLoggedIn() /** TODO: kontrola ci je admin */) { ?>
+                    <?php if ($user->isLoggedIn() && $user->getIdentity()->role === 'admin') { ?>
                         <li class="nav-item"><a class="nav-link nav-admin<?= $isActive('admin') ? ' active' : '' ?>"
                                 <?= $isActive('admin') ? 'aria-current="page"' : '' ?>
                                 href="<?= $link->url('admin.index') ?>">Administrácia</a></li>

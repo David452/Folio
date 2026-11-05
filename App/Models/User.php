@@ -15,12 +15,16 @@ class User extends Model implements IIdentity {
     public string $display_name;
     public string $bio;
     public string $avatar_path;
-    public bool $is_banned;
+    public int $is_banned;
     public int $theme_id;
-    public DateTime $created_at;
+    public string $created_at;
 
     public function getName(): string
     {
         return $this->username;
+    }
+
+    public function getRole(): string {
+        return $this->role;
     }
 }
