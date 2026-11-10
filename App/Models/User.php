@@ -23,8 +23,4 @@ class User extends Model implements IIdentity {
     {
         return $this->username;
     }
-
-    public function getRole(): string {
-        return $this->role;
-    }
 }

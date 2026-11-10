@@ -187,7 +187,6 @@ $publicCount = count(array_filter($projects, fn($p) => $p->is_public));
 </div>
 
 <script>
-    // Názov projektu v potvrdzovacom okne (statická ukážka)
     // TODO: skontrolovat
     document.getElementById('deleteModal').addEventListener('show.bs.modal', function (e) {
         const btn = e.relatedTarget;

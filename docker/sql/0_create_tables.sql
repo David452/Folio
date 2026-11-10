@@ -14,7 +14,8 @@ DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
                               `id` int(11) NOT NULL AUTO_INCREMENT,
                               `name` varchar(64) NOT NULL,
-                              PRIMARY KEY (`id`)
+                              PRIMARY KEY (`id`),
+                              UNIQUE KEY uq_categories_name (name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 
@@ -57,6 +58,7 @@ CREATE TABLE `tags` (
                         `name` varchar(64) NOT NULL,
                         PRIMARY KEY (`id`),
                         KEY `category_id` (`category_id`),
+                        UNIQUE KEY uq_tags_category_name (category_id, name),
                         CONSTRAINT `fk_tags_category` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
